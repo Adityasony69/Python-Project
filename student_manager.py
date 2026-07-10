@@ -18,12 +18,25 @@ def show_students():
     print("=" * 30)
     print("List of Students:", student)
     
-    
+
+def list_students():
+    if not student:
+        print("No student Found")
+    else:
+        for index, name in enumerate(student, start=1):
+            print(f"{index + 1}. {name}")
 def add_student():
-    name =input("enter student name:")
-    student.append(name)
-    print("Student added successfully.")
-    print(student)
+    new_name = input("enter the name of the student: \n").strip().lower()
+    if new_name == "":
+        print("Student name cannot be empty.")
+        return
+    
+    if new_name in student:
+        print("Student already exists in the list.")
+    else:
+        student.append(new_name)
+        print(f"✅ '{new_name}' added successfully.")
+        print(list_students())
     
 def search_student():
     name = input("enter student name to  search:")
